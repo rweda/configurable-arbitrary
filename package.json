@@ -1,0 +1,28 @@
+{
+  "name": "configurable-arbitrary",
+  "version": "0.0.0",
+  "description": "QuickCheck Modules",
+  "main": "ConfigurableArbitrary.js",
+  "scripts": {
+    "test": "NODE_PATH=. nyc ava"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rweda/configurable-arbitrary.git"
+  },
+  "author": "Redwood EDA (http://redwoodeda.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rweda/configurable-arbitrary/issues"
+  },
+  "homepage": "https://github.com/rweda/configurable-arbitrary#readme",
+  "peerDependencies": {
+    "jsverify": "^0.8.2"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "ava": "^0.20.0",
+    "jsverify": "^0.8.2",
+    "nyc": "^11.0.3"
+  }
+}
