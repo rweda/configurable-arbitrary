@@ -17,11 +17,12 @@
     "url": "https://github.com/rweda/configurable-arbitrary/issues"
   },
   "homepage": "https://github.com/rweda/configurable-arbitrary#readme",
-  "peerDependencies": {
+  "optionalDependencies": {
     "jsverify": "^0.8.2"
   },
   "dependencies": {
-    "lodash.merge": "^4.6.0"
+    "lodash.merge": "^4.6.0",
+    "lodash.pickby": "^4.6.0"
   },
   "devDependencies": {
     "ava": "^0.20.0",
@@ -30,6 +31,7 @@
     "jsdoc": "^3.5.0",
     "jsverify": "^0.8.2",
     "nyc": "^11.0.3",
+    "proxyquire": "^1.8.0",
     "rewire": "^2.5.2",
     "sinon": "^2.3.7"
   }
