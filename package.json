@@ -20,13 +20,17 @@
   "peerDependencies": {
     "jsverify": "^0.8.2"
   },
-  "dependencies": {},
+  "dependencies": {
+    "lodash.merge": "^4.6.0"
+  },
   "devDependencies": {
     "ava": "^0.20.0",
     "ava-verify": "0.0.1",
     "docdash": "^0.4.0",
     "jsdoc": "^3.5.0",
     "jsverify": "^0.8.2",
-    "nyc": "^11.0.3"
+    "nyc": "^11.0.3",
+    "rewire": "^2.5.2",
+    "sinon": "^2.3.7"
   }
 }
