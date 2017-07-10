@@ -10,8 +10,8 @@ after_success:
   - $(npm bin)/codecov
   - npm run docs
   - 'if [[ "$TRAVIS_BRANCH" == "master" ]] && [[ "$TRAVIS_PULL_REQUEST" != "true" ]]; then
-      PUBLIC_SURGE_USERNAME=$(echo -n "$SURGE_LOGIN" | sed "s/^[^@]*/${SURGE_LOGIN:0:1}***/")
-      npm install surge
-      $(npm bin)/surge public 2>&1 | sed "s/$SURGE_LOGIN/$PUBLIC_SURGE_USERNAME/g"
-      echo "Published docs."
+      PUBLIC_SURGE_USERNAME=$(echo -n "$SURGE_LOGIN" | sed "s/^[^@]*/${SURGE_LOGIN:0:1}***/");
+      npm install surge;
+      $(npm bin)/surge public 2>&1 | sed "s/$SURGE_LOGIN/$PUBLIC_SURGE_USERNAME/g";
+      echo "Published docs.";
     fi'
