@@ -22,6 +22,7 @@
   "dependencies": {},
   "devDependencies": {
     "ava": "^0.20.0",
+    "ava-verify": "0.0.1",
     "jsverify": "^0.8.2",
     "nyc": "^11.0.3"
   }
