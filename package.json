@@ -4,7 +4,8 @@
   "description": "QuickCheck Modules",
   "main": "ConfigurableArbitrary.js",
   "scripts": {
-    "test": "NODE_PATH=. nyc ava"
+    "test": "NODE_PATH=. nyc ava",
+    "docs": "jsdoc -c docs/jsdoc.json"
   },
   "repository": {
     "type": "git",
@@ -23,6 +24,8 @@
   "devDependencies": {
     "ava": "^0.20.0",
     "ava-verify": "0.0.1",
+    "docdash": "^0.4.0",
+    "jsdoc": "^3.5.0",
     "jsverify": "^0.8.2",
     "nyc": "^11.0.3"
   }
