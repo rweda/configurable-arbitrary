@@ -4,7 +4,7 @@
   "description": "QuickCheck Modules",
   "main": "ConfigurableArbitrary.js",
   "scripts": {
-    "test": "NODE_PATH=. nyc ava",
+    "test": "NODE_PATH=. nyc --reporter html --reporter text ava",
     "docs": "jsdoc -c docs/jsdoc.json"
   },
   "repository": {
