@@ -131,7 +131,7 @@ class ConfigurableArbitrary {
   */
   static defaultArbitrary(given, fallback) {
     if(this.isArbitrary(given)) { return given; }
-    if(typeof fallback === "function") { fallback = fallback(); }
+    if(!this.isArbitrary(fallback) && typeof fallback === "function") { fallback = fallback(); }
     return fallback;
   }
 
