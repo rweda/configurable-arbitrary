@@ -1,6 +1,8 @@
 const merge = require("lodash.merge");
 const pickBy = require("lodash.pickby");
 
+const smapKey = Symbol("smap stimulus");
+
 /**
  * A "factory" for JSVerify generators that can be configured or composed to better meet the needs of individual tests.
 */
@@ -27,7 +29,9 @@ class ConfigurableArbitrary {
    * @see https://github.com/jsverify/jsverify#types
   */
   static isArbitrary(input) {
-    return (typeof input === "object" || typeof input === "function") && typeof input.generator === "function";
+    return input !== null
+      && (typeof input === "object" || typeof input === "function")
+      && typeof input.generator === "function";
   }
 
   /**
@@ -116,6 +120,47 @@ class ConfigurableArbitrary {
       if(this.isArbitrary(val)) { spec[k] = val; }
     }
     return spec;
+  }
+
+  /**
+   * Utility method to configure a default arbitrary if a lower level hasn't provided an arbitrary.
+   * @param {Arbitrary|Any} given the value to use if it's an arbitrary.
+   * @param {Arbitrary|Function<Arbitrary>} fallback an Arbitrary or a function that returns an Arbitrary to use if the
+   *   given value isn't an arbitrary.
+   * @return {Arbitrary} `given` if arbitrary, otherwise `fallback`.
+  */
+  static defaultArbitrary(given, fallback) {
+    if(this.isArbitrary(given)) { return given; }
+    if(typeof fallback === "function") { fallback = fallback(); }
+    return fallback;
+  }
+
+  /**
+   * A simple `smap` that works when returning an object.  Stores a copy of the stimulus in a "hidden" key of the object
+   * (stored under a `Symbol` to prevent collisions) that is retrieved in the reverse map function.
+   * @param {Arbitrary} arb the incoming arbitrary that should be `smap`ed
+   * @param {Function<Object>} cb a forward mapping function that returns an object.
+   * @return {Arbitrary<Object>} the result of the `smap`ed arbitrary.
+   * @see https://github.com/jsverify/jsverify#arbitrary-data
+  */
+  static smapobj(arb, cb) {
+    function forward(...data) {
+      let obj = cb(...data);
+      if(typeof obj[smapKey] !== "undefined") {
+        throw new Error(`object returned to 'smap' already has a '${String(smapKey)}'`);
+      }
+      obj[smapKey] = data[0];
+      return obj;
+    }
+
+    function reverse(obj) {
+      if(typeof obj[smapKey] === "undefined" || obj[smapKey] === null) {
+        throw new Error(`Reverse 'smap' must be given an object with a '${String(smapKey)}'`);
+      }
+      return obj[smapKey];
+    }
+
+    return arb.smap(forward, reverse);
   }
 
 }
