@@ -125,8 +125,8 @@ class ConfigurableArbitrary {
   /**
    * Utility method to configure a default arbitrary if a lower level hasn't provided an arbitrary.
    * @param {Arbitrary|Any} given the value to use if it's an arbitrary.
-   * @param {Arbitrary|Function<Arbitrary>} fallback an Arbitrary or a function that returns an Arbitrary to use if the
-   *   given value isn't an arbitrary.
+   * @param {Arbitrary|Function} fallback an Arbitrary or a function that returns an Arbitrary to use if the given value
+   *   isn't an arbitrary.
    * @return {Arbitrary} `given` if arbitrary, otherwise `fallback`.
   */
   static defaultArbitrary(given, fallback) {
@@ -139,7 +139,7 @@ class ConfigurableArbitrary {
    * A simple `smap` that works when returning an object.  Stores a copy of the stimulus in a "hidden" key of the object
    * (stored under a `Symbol` to prevent collisions) that is retrieved in the reverse map function.
    * @param {Arbitrary} arb the incoming arbitrary that should be `smap`ed
-   * @param {Function<Object>} cb a forward mapping function that returns an object.
+   * @param {Function} cb a forward mapping function that returns an object.
    * @return {Arbitrary<Object>} the result of the `smap`ed arbitrary.
    * @see https://github.com/jsverify/jsverify#arbitrary-data
   */
