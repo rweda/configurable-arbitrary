@@ -69,9 +69,9 @@ class URLArbitrary extends ConfigurableArbitrary {
       
       domain: null,
       
-      path: "/",
+      path: null,
       
-      title: "Google",
+      title: null,
       
     };
   }
@@ -147,11 +147,35 @@ class URLArbitrary extends ConfigurableArbitrary {
 This example uses [`ConfigurableArbitrary.smapobj`][], which automatically preforms a two-way mapping which is
 [needed for jsverify][jsc-smap].
 
+### Usage of URLArbitrary
+
+Now that we've defined the `URLArbitrary`, we can use it in testing.
+
+```js
+const jsc = require("jsverify");
+jsc.ava = require("ava-verify");
+
+const arb = URLArbitrary.build({
+  path: jsc.constant("/"),
+  title: jsc.constant("Google"),
+});
+
+jsc.ava({
+  suite: "Creates URLs",
+}, [ arb ], (t, url) => {
+  t.not(url.url.indexOf("://"), -1);
+});
+```
+
+This test is running via our [ava-verify][] plugin for the AVA test runner, but the arbitrary will work in any JSVerify
+test platform.
+
 [jsverify]: https://github.com/jsverify/jsverify
 [jsc-types]: https://github.com/jsverify/jsverify#types
 [jsc-smap]: https://github.com/jsverify/jsverify#arbitrary-data
 [QuickCheck]: https://en.wikipedia.org/wiki/QuickCheck
 [Node.js]: https://nodejs.org/en/
+[ava-verify]: https://github.com/rweda/ava-verify
 [`ConfigurableArbitrary`]: http://configurable-arbitrary.surge.sh/docs/ConfigurableArbitrary.html
 [`ConfigurableArbitrary.build`]: http://configurable-arbitrary.surge.sh/docs/ConfigurableArbitrary.html#.build
 [`ConfigurableArbitrary.defaultArbitrary`]: http://configurable-arbitrary.surge.sh/docs/ConfigurableArbitrary.html#.defaultArbitrary
