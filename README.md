@@ -3,7 +3,7 @@
   <a href="https://www.npmjs.com/package/configurable-arbitrary">
     <img src="https://img.shields.io/npm/v/configurable-arbitrary.svg">
   </a>
-  <a href="(https://travis-ci.org/rweda/configurable-arbitrary">
+  <a href="https://travis-ci.org/rweda/configurable-arbitrary">
     <img src="https://img.shields.io/travis/rweda/configurable-arbitrary.svg" />
   </a>
   <a href="https://codecov.io/gh/rweda/configurable-arbitrary">
