@@ -20,11 +20,16 @@ test("uses forward transformation", t => {
   t.is(typeof generated.a, "undefined");
 });
 
-test("stores original record in a Symbol", t => {
-  const { end } = t.context;
-  const generated = end.generator(50);
-  t.not(util.inspect(generated).indexOf("Symbol(smap stimulus)"), -1);
-});
+if(require("semver").gt(process.versions.node, '8.0.0')) {
+  // `util.inspect` will show Symbols in output only in Node 8+.  For other versions, skip this test.
+  // The functionality is still checked in later tests - `shrink` won't work without this symbol.
+  // But if we're on 8+, then we can check earlier.
+  test("stores original record in a Symbol", t => {
+    const { end } = t.context;
+    const generated = end.generator(50);
+    t.not(util.inspect(generated).indexOf("Symbol(smap stimulus)"), -1);
+  });
+}
 
 test("stored Symbol does not show up in 'Object.keys()'", t => {
   const { end } = t.context;
