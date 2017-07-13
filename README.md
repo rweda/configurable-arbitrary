@@ -1,10 +1,16 @@
 # ConfigurableArbitrary
-<div style="text-align; center;">
-  [![npmjs.com package](https://img.shields.io/npm/v/configurable-arbitrary.svg)](https://www.npmjs.com/package/configurable-arbitrary)
-  [![Travis build status](https://img.shields.io/travis/rweda/configurable-arbitrary.svg)](https://travis-ci.org/rweda/configurable-arbitrary)
-  [![Codecov](https://img.shields.io/codecov/c/gh/rweda/configurable-arbitrary.svg)](https://codecov.io/gh/rweda/configurable-arbitrary)
-</div>
-<p style="text-align: center; font-size: 120%;">
+<p stile="text-align: center" align="center">
+  <a href="https://www.npmjs.com/package/configurable-arbitrary">
+    <img src="https://img.shields.io/npm/v/configurable-arbitrary.svg">
+  </a>
+  <a href="(https://travis-ci.org/rweda/configurable-arbitrary">
+    <img src="https://img.shields.io/travis/rweda/configurable-arbitrary.svg" />
+  </a>
+  <a href="https://codecov.io/gh/rweda/configurable-arbitrary">
+    <img src="https://img.shields.io/codecov/c/gh/rweda/configurable-arbitrary.svg" />
+  </a>
+</p>
+<p style="text-align: center; font-size: 120%;" align="center">
   Configurable.  Extendable.  Modular.  Concise.
 </p>
 
