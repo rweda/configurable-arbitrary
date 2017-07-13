@@ -1,4 +1,4 @@
-<h1 style="text-align: center">ConfigurableArbitrary</h1>
+<h1 style="text-align: center" align="center">ConfigurableArbitrary</h1>
 <p stile="text-align: center" align="center">
   <a href="https://www.npmjs.com/package/configurable-arbitrary">
     <img src="https://img.shields.io/npm/v/configurable-arbitrary.svg">
