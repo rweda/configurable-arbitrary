@@ -49,10 +49,27 @@ test("stored Symbol does not show up in 'for in' loop", t => {
 });
 
 test("uses reverse transformation to shrink", t => {
-  t.plan(2);
   const { end } = t.context;
-  const generated = end.generator(50);
-  const smaller = end.shrink(generated).headValue;
-  t.notDeepEqual(generated, smaller);
-  t.true(smaller.b.length < generated.b.length);
+  const runs = 50;
+  // Tracks the number of generated values that were unshrinkable
+  let short = 0;
+  /**
+   * Uses the generator to create stimulus.
+   * If the stimulus is shrinkable, shrinks, ensures shrunk value is not the initial value, and the shrunk value is
+   * shorter.
+   * If unshrinkable, increments `short` and continues.
+  */
+  function reverseTransform() {
+    const generated = end.generator(50);
+    if(generated.b.length <= 1) { ++short; return; }
+    const smaller = end.shrink(generated).headValue;
+    t.notDeepEqual(generated, smaller);
+    t.true(smaller.b.length < generated.b.length);
+  }
+  for (let run = 0; run < runs; ++run) { reverseTransform(); }
+  t.plan(((runs - short) * 2) + 2);
+  t.true(short > 1,
+    `expected at least two tests to generate unshrinkable stimulus.  Only ${short} stimuli were unshrinkable`);
+  t.true(short < runs - 2,
+    `expected at least two tests to generated shrinkable stimuli.  Only ${runs - short} were shrinkable`);
 });
