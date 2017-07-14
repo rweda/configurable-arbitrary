@@ -29,7 +29,7 @@ the ASCII character set.
 Shipping different arbitraries for primitive types works, but becomes impossible when dealing with larger data types.
 That's where ConfigurableArbitrary steps in.
 
-## Overview
+## Basic Usage Guide
 
 ConfigurableArbitrary is base class that goes from run-time configuration to an Arbitrary, intended for creating object
 instances and other complex data types.
@@ -41,6 +41,43 @@ Users should extend the [`ConfigurableArbitrary`][] class to provide properties 
 [`ConfigurableArbitrary`][] comes with methods for each stage, starting with [`ConfigurableArbitrary.build`][].
 The class also contains internal methods to help some of the stages, and some basic utilities that simplify option
 definitions.
+
+For this guide, we'll be creating a `URLArbitrary`, which can generate URL-like strings for testing purposes.
+
+```js
+const ConfigurableArbitrary = require("configurable-arbitrary");
+
+class URLArbitrary extends ConfigurableArbitrary {
+  /* Properties and methods will be defined later in the documentation. */
+}
+
+module.exports = URLArbitrary;
+```
+
+Then in testing, we'll be able to use the arbitrary.  First, we'll bake configuration options into the Arbitrary,
+converting the `ConfigurableArbitrary` into a a JSVerify `Arbitrary`.
+
+```js
+const jsc = require("jsverify");
+const URLArbitrary = require("./URLArbitrary.js");
+
+let url = URLArbitrary.build({
+  domain: jsc.constant("google.com"),
+});
+```
+
+The configuration options are described in more depth later, but the `domain` will be merged with the `protocol`
+(e.g. `https`, etc.) and `path` to create the full URL string.  We aren't specifying the `protocol` or `path`, so they
+will still be default values.
+
+`url` is now a valid JSVerify `Arbitrary`.  We can pass the Arbitrary to utilities like [`jsc.forall`][jsc-props] to
+run tests:
+
+```js
+jsc.assert(jsc.forall(url, ({url}) => {
+  return url.indexOf("://") > -1;
+}));
+```
 
 ### Stage 1: Configuration
 
@@ -57,8 +94,6 @@ Each sub-class of `ConfigurableArbitrary` can define an `opts` property that wil
 configuration:
 
 ```js
-const ConfigurableArbitrary = require("configurable-arbitrary");
-
 class URLArbitrary extends ConfigurableArbitrary {
   static get opts() {
     return {
@@ -86,8 +121,6 @@ want multiple Arbitrary values to configure.
 Even for our simple `URLArbitrary` above, which will just output a single string and the page title, the configuration
 is split into several chunks so that users can override specific sections of the URL while leaving the other sections
 unchanged.
-
-By default, `ConfigurableArbitrary` will collect each `Arbitrary` that is needed for the 
 
 Each sub-class of `ConfigurableArbitrary` can define a `spec` method, which will be merged into an object that is passed
 to `jsverify.record`, which will merge them into an object so they can be passed as a single variable.
@@ -173,6 +206,7 @@ test platform.
 [jsverify]: https://github.com/jsverify/jsverify
 [jsc-types]: https://github.com/jsverify/jsverify#types
 [jsc-smap]: https://github.com/jsverify/jsverify#arbitrary-data
+[jsc-props]: https://github.com/jsverify/jsverify#properties
 [QuickCheck]: https://en.wikipedia.org/wiki/QuickCheck
 [Node.js]: https://nodejs.org/en/
 [ava-verify]: https://github.com/rweda/ava-verify
