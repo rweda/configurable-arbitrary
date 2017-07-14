@@ -9,6 +9,7 @@
 - `ConfigurableArbitrary` utilities:
   - `defaultArbitrary`
   - `smapobj`
+- Configuration for Travis to test on Node 7 and 8 (#4)
 
 ### Modified
 
