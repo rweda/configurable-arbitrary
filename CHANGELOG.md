@@ -3,6 +3,12 @@
 ## [Unreleased]
 [Unreleased]: https://github.com/rweda/configurable-arbitrary/compare/v0.0.1...HEAD
 
+## [0.0.2] - 2017-07-14
+
+[Code][0.0.2] ([Diff][0.0.2-diff]) | [Changelog][0.0.2-log]
+
+Docs, examples, bugfixes, and utilities.
+
 ### Added
 
 - `webpage` example
@@ -16,7 +22,9 @@
 - Fixed `isArbitrary` to handle `null` (threw error as `typeof null === "object"`)
 - Fixed partially failing test (#2)
 
+[0.0.2]: https://github.com/rweda/configurable-arbitrary/tree/v0.0.2
 [0.0.2-diff]: https://github.com/rweda/configurable-arbitrary/compare/v0.0.1...v0.0.2
+[0.0.2-log]:  https://github.com/rweda/configurable-arbitrary/blob/master/CHANGELOG.md#002---2017-07-14
 
 ## [0.0.1] - 2017-07-11
 
