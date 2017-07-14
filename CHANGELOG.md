@@ -13,6 +13,7 @@
 ### Modified
 
 - Fixed `isArbitrary` to handle `null` (threw error as `typeof null === "object"`)
+- Fixed partially failing test (#2)
 
 [0.0.2-diff]: https://github.com/rweda/configurable-arbitrary/compare/v0.0.1...v0.0.2
 
