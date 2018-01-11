@@ -1,12 +1,20 @@
 # Changelog
 
 ## [Unreleased]
-[Unreleased]: https://github.com/rweda/configurable-arbitrary/compare/v0.0.1...HEAD
+[Unreleased]: https://github.com/rweda/configurable-arbitrary/compare/v0.0.3...HEAD
+
+## [0.0.3] - 2018-01-11
+
+[Code][0.0.3] ([Diff][0.0.3-diff]) | [Changelog][0.0.3-log]
 
 ## Modified
 
 - Prevented `ConfigurableArbitrary#arb` from swallowing too many errors in `try`/`catch` block.
 - Updated `package-lock.json`.
+
+[0.0.3]: https://github.com/rweda/configurable-arbitrary/tree/v0.0.3
+[0.0.3-diff]: https://github.com/rweda/configurable-arbitrary/compare/v0.0.2...v0.0.3
+[0.0.3-log]:  https://github.com/rweda/configurable-arbitrary/blob/master/CHANGELOG.md#003---2018-01-11
 
 ## [0.0.2] - 2017-07-14
 
