@@ -5,6 +5,7 @@
 
 ## Modified
 
+- Prevented `ConfigurableArbitrary#arb` from swallowing too many errors in `try`/`catch` block.
 - Updated `package-lock.json`.
 
 ## [0.0.2] - 2017-07-14

@@ -57,12 +57,14 @@ class ConfigurableArbitrary {
    * @see https://github.com/jsverify/jsverify#types
   */
   static arb(opts) {
+    let jsverify;
     try {
-      return require("jsverify").record(this.collectSpecs(opts));
+      jsverify = require("jsverify");
     }
     catch (err) {
       throw new Error("'jsverify' is listed as an optionalDependency.  Make sure it's installed before calling 'arb'.");
     }
+    return jsverify.record(this.collectSpecs(opts));
   }
 
   /**
