@@ -3,6 +3,10 @@
 ## [Unreleased]
 [Unreleased]: https://github.com/rweda/configurable-arbitrary/compare/v0.0.1...HEAD
 
+### Modified
+
+- Prevented `ConfigurableArbitrary#arb` from swallowing too many errors in `try`/`catch` block.
+
 ## [0.0.2] - 2017-07-14
 
 [Code][0.0.2] ([Diff][0.0.2-diff]) | [Changelog][0.0.2-log]
