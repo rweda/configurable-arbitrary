@@ -5,6 +5,8 @@
 
 ## [0.0.3] - 2018-01-11
 
+Improved error handling.
+
 [Code][0.0.3] ([Diff][0.0.3-diff]) | [Changelog][0.0.3-log]
 
 ## Modified
