@@ -1,6 +1,6 @@
 {
   "name": "configurable-arbitrary",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "QuickCheck Modules",
   "main": "ConfigurableArbitrary.js",
   "scripts": {
